@@ -12,9 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	$people = ['Taylor', 'Matt', 'Jeffrey'];
+	// $people = [];
+    // return view('welcome');
+
+    // return view('welcome', ['people' => $people]);
+    return view('welcome', compact('people'));
+    // return view('welcome')->with('people', $people);
+    // return view('welcome')->withPeople($people);
 });
 
 Route::get('about', function() {
-    return view('pages.about'); //resources/views/pages/about.blade.php
+    return view('pages.about'); // resources/views/pages/about.blade.php
 });
