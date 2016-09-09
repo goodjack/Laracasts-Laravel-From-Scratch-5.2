@@ -11,6 +11,7 @@
 |
 */
 
+/*
 Route::get('/', function () {
 	$people = ['Taylor', 'Matt', 'Jeffrey'];
 	// $people = [];
@@ -21,7 +22,13 @@ Route::get('/', function () {
     // return view('welcome')->with('people', $people);
     // return view('welcome')->withPeople($people);
 });
+*/
 
+/*
 Route::get('about', function() {
     return view('pages.about'); // resources/views/pages/about.blade.php
 });
+*/
+
+Route::get('/', 'PagesController@home');
+Route::get('about', 'PagesController@about');
