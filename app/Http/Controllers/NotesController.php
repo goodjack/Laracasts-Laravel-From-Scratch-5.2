@@ -1,0 +1,59 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Card;
+use App\Note;
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+
+class NotesController extends Controller
+{
+    // public function store() // store(Request $request)
+    // {
+    // 	// return $request->all();
+    // 	// return \Request::all();
+    // 	return request()->all();
+    // }
+
+    public function store(Request $request, Card $card)
+    {
+
+    	// == 1 ==
+    	// $note = new Note;
+    	// $note->body = $request->body;
+    	// $card->notes()->save($note);
+
+    	// == 2.1 ==
+    	// $note = new Note(['body' => $request->body]);
+    	// $card->notes()->save($note);
+
+		// == 2.2 ==
+    	// $card->notes()->save(
+    	// 	new Note(['body' => $request->body])
+    	// );
+
+    	// == 3 ==
+		// $card->notes()->create([
+		// 	'body' => $request->body
+		// ]);
+
+		// == 4 ==
+		// Because of the class Node: protected $fillable = ['body'];
+		// $card->notes()->create($request->all()); // []
+
+		// == 5 ==
+		// What is that work actually trying to accomplish?
+		// Add note to the card
+		// $card->addNote($note)
+		$card->addNote(
+			new Note($request->all())
+		);
+
+    	// return \Redirect::to('/some/new/uri');
+    	// return redirect()->to('foo/');
+    	// return redirect('foo/');
+    	return back();
+    }
+}
